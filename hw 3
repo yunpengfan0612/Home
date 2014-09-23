@@ -1,0 +1,104 @@
+public class Person {
+    protected String firstName;
+    protected String lastName;
+
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public String toString1() {
+        return firstName + " " + lastName;
+    }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public class PersonList {
+    private Person[] people;
+    private int count = 0;
+
+    public PersonList(int maxSize) {
+        people = new Person[maxSize];
+    }
+
+    public void listPeople() {
+        for (Person x: people) {
+            if (x != null) {
+                System.out.println(x.toString());
+            }
+        }
+    }
+
+    public void add(Person p) {
+        if (count < people.length) {
+            people[count] = p;
+            count++;
+        } else {
+            System.out.println("You have already reach the maximum number of"
+                    + " people");
+        }
+    }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public class Professor extends Person {
+    private int rateMyProfessorRating;
+    private double averageGPA;
+
+    public Professor(String firstName, String lastName,
+            int rateMyProfessorRating, double averageGPA) {
+        super(firstName, lastName);
+        this.rateMyProfessorRating = rateMyProfessorRating;
+        this.averageGPA = averageGPA;
+    }
+    public String toString() {
+        return "Hi, my name is " + super.toString() + ". My Rate Ny Professor "
+                + "Rating is " + rateMyProfessorRating + "/5 and my average GPA"
+                + "is " + averageGPA + "/4.00. I really wish students would "
+                + "stop emailing me so much.";
+    }
+
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public class Student extends Person {
+    protected int intelligence;
+    protected int motivation;
+
+    public Student(String firstName, String lastName,
+            int intelligence, int motivation) {
+        super(firstName, lastName);
+        this.intelligence = intelligence;
+        this.motivation = motivation;
+    }
+    public String toString() {
+        return "Hi, my name is " + super.toString() + ". My intelligence is "
+                + intelligence + "/10 and my motivation is " + motivation
+                + "/10. I'm stressed out.";
+    }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public class UndergraduateStudent extends Student {
+    public UndergraduateStudent(String firstName, String lastName,
+            int intelligence, int motivation) {
+        super(firstName, lastName, intelligence, motivation);
+    }
+    public String toString() {
+        Person a = new Person(firstName, lastName);
+        return "Hi, my name is " + a.toString() + ". My intelligence is "
+                + intelligence + "/10 and my motivation is " + motivation
+                + "/10. I'm stressed out AND broke.";
+    }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public class GraduateStudent extends Student {
+    public GraduateStudent(String firstName, String lastName,
+            int intelligence, int motivation) {
+                super(firstName, lastName, intelligence, motivation);
+    }
+    public String toString() {
+        Person a = new Person(firstName, lastName);
+
+        return "Hi, my name is " + a.toString() + ". My intelligence is "
+                + intelligence + "/10 and my motivation is " + motivation
+                + "/10. I'm going home this weekend to get laundry "
+                + "done; talk about clutch.";
+    }
+}
